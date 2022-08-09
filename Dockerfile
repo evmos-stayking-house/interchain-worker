@@ -6,18 +6,12 @@ FROM node:16-alpine as builder
 # /app 디렉터리를 WORKDIR로 설정
 WORKDIR /app
 
-# private npm registry 정보 파일 복사
-COPY .npmrc ./
-
 # package 정의 파일 복사
 COPY package.json ./
 COPY yarn.lock ./
 
 # package 설치
 RUN yarn
-
-# private npm registry 정보 파일 삭제
-RUN rm -f .npmrc
 
 # 소스 복사
 COPY . .

@@ -17,6 +17,7 @@ async function bootstrap() {
 
     await app.select(CommandModule).get(CommandService).exec();
     clearTimeout(appTimeout); // APP_TIMEOUT 만큼 기다리지 않고 바로 종료하기 위해 timeout을 해제 함
+
     await app.close();
     process.exit(0);
   } catch (error) {
