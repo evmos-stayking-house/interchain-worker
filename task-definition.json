@@ -1,0 +1,51 @@
+{
+  "executionRoleArn": "arn:aws:iam::767078302179:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/bq-scheduled-worker-task",
+          "awslogs-region": "ap-northeast-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "linuxParameters": {
+        "initProcessEnabled": true
+      },
+      "environment": [
+        {
+          "name": "APP_ENV",
+          "value": "development"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "VALIDATOR_MNEMONIC",
+          "valueFrom": "validator_mnemonic"
+        }
+      ],
+      "cpu": 256,
+      "memory": null,
+      "memoryReservation": 512,
+      "essential": true,
+      "ulimits": [
+        {
+          "softLimit": 65535,
+          "hardLimit": 65535,
+          "name": "nofile"
+        }
+      ],
+      "image": "898329626477.dkr.ecr.ap-northeast-2.amazonaws.com/sooho/bq/scheduled-worker",
+      "name": "scheduled-worker"
+    }
+  ],
+  "taskRoleArn": "arn:aws:iam::767078302179:role/ecsTaskExecutionRole",
+  "family": "bq-scheduled-worker-task",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "networkMode": "awsvpc",
+  "cpu": "256",
+  "memory": "512"
+}
