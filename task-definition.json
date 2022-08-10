@@ -1,5 +1,5 @@
 {
-  "executionRoleArn": "arn:aws:iam::767078302179:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::898329626477:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
       "logConfiguration": {
@@ -40,7 +40,7 @@
       "name": "scheduled-worker"
     }
   ],
-  "taskRoleArn": "arn:aws:iam::767078302179:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::898329626477:role/ecsTaskExecutionRole",
   "family": "bq-scheduled-worker-task",
   "requiresCompatibilities": [
     "FARGATE"
