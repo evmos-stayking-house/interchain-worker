@@ -11,7 +11,10 @@
         }
       },
       "command": [
-        "evmos:delegation:tx evmosvaloper1qvc6jej73armfs5fadn9lprx768f46d9wpd7d7 --from evmos1h82qusem2s60mjagp4q9lyrpgw4r2s3h6xddse"
+        "evmos:delegation:tx",
+        "evmosvaloper1qvc6jej73armfs5fadn9lprx768f46d9wpd7d7",
+        "--from",
+        "evmos1h82qusem2s60mjagp4q9lyrpgw4r2s3h6xddse"
       ],
       "linuxParameters": {
         "initProcessEnabled": true
