@@ -44,9 +44,9 @@ jobs:
           container-name: scheduled-worker
           image: ${{ steps.build-image.outputs.image }}
 
-#      - name: Deploy to Amazon ECS Scheduled Tasks
-#        uses: airfordable/ecs-deploy-task-definition-to-scheduled-task@v2.1.0
-#        with:
-#          cluster: BQ-Evmos-Hackathon
-#          rule-prefix: bq-scheduled-worker
-#          task-definition: ${{ steps.task-def.outputs.task-definition }}
+      - name: Deploy to Amazon ECS Scheduled Tasks
+        uses: airfordable/ecs-deploy-task-definition-to-scheduled-task@v2.1.0
+        with:
+          cluster: BQ-Evmos-Hackathon
+          rule-prefix: bq-scheduled-worker
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
