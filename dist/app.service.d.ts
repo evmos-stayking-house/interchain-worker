@@ -10,6 +10,7 @@ export declare class AppService {
         validatorAddress: string;
         fromAddress: string;
     }): Promise<void>;
+    _calculateDelegationAmount(balance: any): string;
     _hasEnoughAmountOf(balance: any): boolean;
     _validToVote(fromAddress: string): Promise<{
         valid: boolean;

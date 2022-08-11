@@ -12,7 +12,6 @@ const transactions_1 = require("@tharsis/transactions");
 const evmos_ts_wallet_1 = require("@hanchon/evmos-ts-wallet");
 const environments_1 = require("../../constants/environments");
 let CosmTransactionService = class CosmTransactionService {
-    stakingToValidator(mnemonic, validatorAddress, amount) { }
     async makeUnsignedDelegationTx(wallet, amount, validatorAddress) {
         const sender = await evmos_ts_wallet_1.getSender(wallet, environments_1.EVMOS_TESTNET_END_POINT);
         return transactions_1.createTxMsgDelegate(evmos_ts_wallet_1.TESTNET_CHAIN, sender, {

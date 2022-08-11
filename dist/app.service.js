@@ -14,6 +14,8 @@ const common_1 = require("@nestjs/common");
 const cosm_provider_service_1 = require("./provider/cosmos/cosm-provider.service");
 const cosm_transaction_service_1 = require("./transaction/cosmos/cosm-transaction.service");
 const wallet_service_1 = require("./wallet/wallet.service");
+const environments_1 = require("./constants/environments");
+const util_1 = require("./util");
 let AppService = class AppService {
     constructor(providerService, transactionService, walletService) {
         this.providerService = providerService;
@@ -21,13 +23,24 @@ let AppService = class AppService {
         this.walletService = walletService;
     }
     async votingProcess(params) {
+        if (!environments_1.DELEGATOR_MNEMONIC)
+            return console.log(`Vault 의 Pk 가 설정 되어있지 않습니다.`);
         const { validatorAddress, fromAddress } = params;
         const { valid, balance } = await this._validToVote(fromAddress);
         if (!valid && this._hasEnoughAmountOf(balance))
             return console.log(`잔고가 충분하지 않은 상태에서 ReInvest 를 완료할 수 없습니다.`);
+        const wallet = await this.walletService.getWalletFrom(environments_1.DELEGATOR_MNEMONIC);
+        const unSignedTx = await this.transactionService.makeUnsignedDelegationTx(wallet, this._calculateDelegationAmount(balance), validatorAddress);
+        const txResponse = await this.walletService.sendSignedTx(wallet, unSignedTx);
+        console.log('===========[Delegation TX Result]=============');
+        console.log(txResponse);
+        console.log('==============================================');
+    }
+    _calculateDelegationAmount(balance) {
+        return util_1.bigNumMultipliedByNumber(balance, environments_1.DELEGATION_AMOUNT_RATE);
     }
     _hasEnoughAmountOf(balance) {
-        return Number(balance) / 1e18 < 0.01;
+        return util_1.bigNumDividedByNumber(balance.toString(), Number(1e18)) < 1000;
     }
     async _validToVote(fromAddress) {
         var _a, _b, _c;

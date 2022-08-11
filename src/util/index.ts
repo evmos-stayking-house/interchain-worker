@@ -5,5 +5,5 @@ export const bigNumDividedByNumber = (x: string, y: number): number => {
 };
 
 export const bigNumMultipliedByNumber = (x: string, y: number): string => {
-  return new BigNumber(x).multipliedBy(new BigNumber(y)).toFixed();
+  return new BigNumber(x).multipliedBy(new BigNumber(y)).toFixed(0);
 };

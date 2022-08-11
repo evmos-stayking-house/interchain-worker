@@ -14,13 +14,13 @@ import {
   DELEGATION_TX_GAS_LIMIT,
   DENOMINATION,
   EVMOS_TESTNET_END_POINT,
-  VALIDATOR_MNEMONIC,
+  DELEGATOR_MNEMONIC,
 } from '../../constants/environments';
 
 let privateMnemonic;
 
 beforeAll(() => {
-  privateMnemonic = VALIDATOR_MNEMONIC; // env 에서 추출
+  privateMnemonic = DELEGATOR_MNEMONIC; // env 에서 추출
 });
 
 test('delegation tx : ', async () => {

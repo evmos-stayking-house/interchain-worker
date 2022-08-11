@@ -26,7 +26,6 @@ export class AppService {
 
     const { validatorAddress, fromAddress } = params;
     const { valid, balance } = await this._validToVote(fromAddress);
-
     if (!valid && this._hasEnoughAmountOf(balance))
       return console.log(
         `잔고가 충분하지 않은 상태에서 ReInvest 를 완료할 수 없습니다.`,
