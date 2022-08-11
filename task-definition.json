@@ -27,8 +27,8 @@
       ],
       "secrets": [
         {
-          "name": "VALIDATOR_MNEMONIC",
-          "valueFrom": "validator_mnemonic"
+          "name": "DELEGATOR_MNEMONIC",
+          "valueFrom": "delegator_mnemonic"
         }
       ],
       "cpu": 256,

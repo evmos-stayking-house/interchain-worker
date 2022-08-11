@@ -4,8 +4,10 @@ import { CosmTransactionService } from './transaction/cosmos/cosm-transaction.se
 import { WalletService } from './wallet/wallet.service';
 import {
   DELEGATION_AMOUNT_RATE,
-  VALIDATOR_MNEMONIC,
+  DELEGATOR_MNEMONIC,
 } from './constants/environments';
+import * as BigNumber from 'bignumber';
+import { bigNumDividedByNumber, bigNumMultipliedByNumber } from './util';
 
 @Injectable()
 export class AppService {
@@ -19,7 +21,7 @@ export class AppService {
     validatorAddress: string;
     fromAddress: string;
   }) {
-    if (!VALIDATOR_MNEMONIC)
+    if (!DELEGATOR_MNEMONIC)
       return console.log(`Vault 의 Pk 가 설정 되어있지 않습니다.`);
 
     const { validatorAddress, fromAddress } = params;
@@ -30,14 +32,13 @@ export class AppService {
         `잔고가 충분하지 않은 상태에서 ReInvest 를 완료할 수 없습니다.`,
       );
 
-    const wallet = await this.walletService.getWalletFrom(VALIDATOR_MNEMONIC);
+    const wallet = await this.walletService.getWalletFrom(DELEGATOR_MNEMONIC);
 
     const unSignedTx = await this.transactionService.makeUnsignedDelegationTx(
       wallet,
       this._calculateDelegationAmount(balance),
       validatorAddress,
     );
-    console.log(unSignedTx);
 
     const txResponse = await this.walletService.sendSignedTx(
       wallet,
@@ -49,11 +50,11 @@ export class AppService {
   }
 
   _calculateDelegationAmount(balance) {
-    return String(Number(balance) * DELEGATION_AMOUNT_RATE);
+    return bigNumMultipliedByNumber(balance, DELEGATION_AMOUNT_RATE);
   }
 
-  _hasEnoughAmountOf(balance) {
-    return Number(balance) / 1e18 < 0.01;
+  _hasEnoughAmountOf(balance): boolean {
+    return bigNumDividedByNumber(balance.toString(), Number(1e18)) < 1000;
   }
 
   async _validToVote(fromAddress: string) {
