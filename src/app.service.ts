@@ -53,7 +53,7 @@ export class AppService {
   }
 
   _hasEnoughAmountOf(balance): boolean {
-    return bigNumDividedByNumber(balance.toString(), Number(1e18)) < 1000;
+    return bigNumDividedByNumber(balance.toString(), Number(1e18)) - 2000 > 0;
   }
 
   async _validToVote(fromAddress: string) {
