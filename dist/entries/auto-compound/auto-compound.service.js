@@ -9,14 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppService = void 0;
+exports.AutoCompoundService = void 0;
 const common_1 = require("@nestjs/common");
-const cosm_provider_service_1 = require("./provider/cosmos/cosm-provider.service");
-const cosm_transaction_service_1 = require("./transaction/cosmos/cosm-transaction.service");
-const wallet_service_1 = require("./wallet/wallet.service");
-const environments_1 = require("./constants/environments");
-const util_1 = require("./util");
-let AppService = class AppService {
+const cosm_provider_service_1 = require("../../provider/cosmos/cosm-provider.service");
+const cosm_transaction_service_1 = require("../../transaction/cosmos/cosm-transaction.service");
+const wallet_service_1 = require("../../wallet/wallet.service");
+const environments_1 = require("../../constants/environments");
+const util_1 = require("../../util");
+let AutoCompoundService = class AutoCompoundService {
     constructor(providerService, transactionService, walletService) {
         this.providerService = providerService;
         this.transactionService = transactionService;
@@ -40,7 +40,7 @@ let AppService = class AppService {
         return util_1.bigNumMultipliedByNumber(balance, environments_1.DELEGATION_AMOUNT_RATE);
     }
     _hasEnoughAmountOf(balance) {
-        return util_1.bigNumDividedByNumber(balance.toString(), Number(1e18)) < 1000;
+        return util_1.bigNumDividedByNumber(balance.toString(), Number(1e18)) - 2000 > 0;
     }
     async _validToVote(fromAddress) {
         var _a, _b, _c;
@@ -54,11 +54,11 @@ let AppService = class AppService {
         };
     }
 };
-AppService = __decorate([
+AutoCompoundService = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [cosm_provider_service_1.CosmProviderService,
         cosm_transaction_service_1.CosmTransactionService,
         wallet_service_1.WalletService])
-], AppService);
-exports.AppService = AppService;
-//# sourceMappingURL=app.service.js.map
+], AutoCompoundService);
+exports.AutoCompoundService = AutoCompoundService;
+//# sourceMappingURL=auto-compound.service.js.map

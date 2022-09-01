@@ -15,7 +15,7 @@ import {
   DENOMINATION,
   EVMOS_TESTNET_END_POINT,
   DELEGATOR_MNEMONIC,
-} from '../../constants/environments';
+} from '../../../constants/environments';
 
 let privateMnemonic;
 

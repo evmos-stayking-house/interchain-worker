@@ -1,10 +1,14 @@
-import { AppService } from './app.service';
+import { AutoCompoundService } from './tasks/auto-compound/auto-compound.service';
 import { Command, Positional, Option } from 'nestjs-command';
 import { Injectable } from '@nestjs/common';
+import {StaykingLiquidationService} from "./tasks/stayking-liquidation/stayking-liquidation.service";
 
 @Injectable()
 export class AppCommand {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly autoCompoundService: AutoCompoundService,
+    private readonly staykingLiquidationService:StaykingLiquidationService
+  ) {}
 
   @Command({
     command: 'evmos:delegation:tx <validatorAddress>',
@@ -26,6 +30,24 @@ export class AppCommand {
     })
     fromAddress: string,
   ) {
-    await this.appService.votingProcess({ validatorAddress, fromAddress });
+    await this.autoCompoundService.votingProcess({ validatorAddress, fromAddress });
   }
+
+
+  @Command({
+    command: 'evmos:liquidation:bot',
+    describe: 'liquidation bot',
+  })
+  async liquidation(
+    @Option({
+      name: 'vaultAddress',
+      describe: 'vaultAddress (ex: 0x1234)',
+      alias: 'vault',
+      type: 'string',
+      required: true,
+    })
+      vaultAddress: string) {
+    await this.staykingLiquidationService.exec(vaultAddress);
+  }
+
 }

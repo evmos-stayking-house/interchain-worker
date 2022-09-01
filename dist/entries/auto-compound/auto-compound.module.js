@@ -6,17 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.AutoCompoundModule = void 0;
 const common_1 = require("@nestjs/common");
 const nestjs_command_1 = require("nestjs-command");
-const cosm_transaction_module_1 = require("./transaction/cosmos/cosm-transaction.module");
-const cosm_provider_module_1 = require("./provider/cosmos/cosm-provider.module");
-const wallet_module_1 = require("./wallet/wallet.module");
-const app_command_1 = require("./app.command");
-const app_service_1 = require("./app.service");
-let AppModule = class AppModule {
+const cosm_transaction_module_1 = require("../../transaction/cosmos/cosm-transaction.module");
+const cosm_provider_module_1 = require("../../provider/cosmos/cosm-provider.module");
+const wallet_module_1 = require("../../wallet/wallet.module");
+const app_command_1 = require("../../app.command");
+const auto_compound_service_1 = require("./auto-compound.service");
+let AutoCompoundModule = class AutoCompoundModule {
 };
-AppModule = __decorate([
+AutoCompoundModule = __decorate([
     common_1.Module({
         imports: [
             nestjs_command_1.CommandModule,
@@ -24,8 +24,8 @@ AppModule = __decorate([
             cosm_provider_module_1.CosmProviderModule,
             wallet_module_1.WalletModule,
         ],
-        providers: [app_service_1.AppService, app_command_1.AppCommand],
+        providers: [auto_compound_service_1.AutoCompoundService, app_command_1.AppCommand],
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], AutoCompoundModule);
+exports.AutoCompoundModule = AutoCompoundModule;
+//# sourceMappingURL=auto-compound.module.js.map

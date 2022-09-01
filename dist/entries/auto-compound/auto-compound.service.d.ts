@@ -1,7 +1,7 @@
-import { CosmProviderService } from './provider/cosmos/cosm-provider.service';
-import { CosmTransactionService } from './transaction/cosmos/cosm-transaction.service';
-import { WalletService } from './wallet/wallet.service';
-export declare class AppService {
+import { CosmProviderService } from '../../provider/cosmos/cosm-provider.service';
+import { CosmTransactionService } from '../../transaction/cosmos/cosm-transaction.service';
+import { WalletService } from '../../wallet/wallet.service';
+export declare class AutoCompoundService {
     private readonly providerService;
     private readonly transactionService;
     private readonly walletService;

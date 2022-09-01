@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { generateEndpointBalances } from '@tharsis/provider';
-import { EVMOS_TESTNET_END_POINT } from '../../constants/environments';
+import { EVMOS_TESTNET_END_POINT } from '../../../constants/environments';
 import axios from 'axios';
 
 interface BalanceInfo {
