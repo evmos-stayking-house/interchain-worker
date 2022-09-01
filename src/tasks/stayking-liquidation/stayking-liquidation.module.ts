@@ -1,11 +1,8 @@
-import {Module} from "@nestjs/common";
-import {StaykingLiquidationService} from "./stayking-liquidation.service";
+import { Module } from '@nestjs/common';
+import { StaykingLiquidationService } from './stayking-liquidation.service';
 
 @Module({
-  providers: [
-
-    StaykingLiquidationService
-  ],
+  providers: [StaykingLiquidationService],
   exports: [StaykingLiquidationService]
 })
 export class StaykingLiquidationModule {}
