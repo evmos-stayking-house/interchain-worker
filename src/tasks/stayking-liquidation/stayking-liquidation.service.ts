@@ -58,8 +58,8 @@ export class StaykingLiquidationService {
           `Your cron function for liquidation in ${this.stayKingContract.name_} for position ${positionId} works`
         );
       } catch (error) {
-        /* 청산 실패 시 Urgent Message */
-        console.log(`position 청산 실패 :: `, { positionId, tokenAddress, reason: error.toString() });
+        /* Slack Urgent Message : TBD */
+        console.log(`liquidation for the position failed :: `, { positionId, tokenAddress, reason: error.toString() });
       }
     }
   }
