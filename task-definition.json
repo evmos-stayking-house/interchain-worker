@@ -12,9 +12,8 @@
       },
       "command": [
         "evmos:liquidation:tx",
-        "",
-        "--node-url",
-        "https://eth.bd.evmos.dev:8545"
+        "--vault",
+        "{테스트 환경 Vault Address}"
       ],
       "linuxParameters": {
         "initProcessEnabled": true
