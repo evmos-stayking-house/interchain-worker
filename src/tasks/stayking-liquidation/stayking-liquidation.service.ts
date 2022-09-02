@@ -42,7 +42,7 @@ export class StaykingLiquidationService {
   async killPositions(killablePositions: KillablePosition[], vaultContract: Contract) {
     const tokenAddress = await vaultContract.token();
     const from = await this.signer.getAddress();
-
+    const stayKingAddress = await this.stayKingContract.address;
     for (const { positionId } of killablePositions) {
       // re check...
       const isKillable = await this.stayKingContract.isKillable(tokenAddress, positionId);
@@ -55,7 +55,7 @@ export class StaykingLiquidationService {
         });
 
         console.log(
-          `Your cron function for liquidation in ${this.stayKingContract.name_} for position ${positionId} works`
+          `[StayKing Contract:: ${this.stayKingContract.address}] the position id ${positionId} has been cleared.`
         );
       } catch (error) {
         /* Slack Urgent Message : TBD */
