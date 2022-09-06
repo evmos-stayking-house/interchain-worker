@@ -11,7 +11,7 @@
         }
       },
       "command": [
-        "evmos:liquidation:tx",
+        "evmos:liquidation:bot",
         "--vault",
         "0x1165fB4616AEBa68D9bD928811bBd5338b3eA6F1"
       ],
