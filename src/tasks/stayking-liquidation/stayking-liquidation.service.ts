@@ -62,6 +62,8 @@ export class StaykingLiquidationService {
         console.log(`liquidation for the position failed :: `, { positionId, tokenAddress, reason: error.toString() });
       }
     }
+
+    console.log(`liquidation bot successfully completed to check all positions of the vault(${tokenAddress})`);
   }
 
   async aggregateKillablePositions(posLen: number, vaultContract: Contract): Promise<KillablePosition[]> {
