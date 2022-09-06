@@ -55,7 +55,7 @@ export class StaykingLiquidationService {
         });
 
         console.log(
-          `[StayKing Contract:: ${this.stayKingContract.address}] the position id ${positionId} has been cleared.`
+          `[StayKing Contract:: ${this.stayKingContract.address}] the position id ${positionId} of the vault(${tokenAddress}) has been cleared.`
         );
       } catch (error) {
         /* Slack Urgent Message : TBD */
