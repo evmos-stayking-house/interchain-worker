@@ -1,21 +1,22 @@
 import { Injectable } from '@nestjs/common';
-import { CosmProviderService } from './provider/cosmos/cosm-provider.service';
-import { CosmTransactionService } from './transaction/cosmos/cosm-transaction.service';
-import { WalletService } from './wallet/wallet.service';
+import { CosmProviderService } from '../../modules/provider/cosmos/cosm-provider.service';
+import { CosmTransactionService } from '../../modules/transaction/cosmos/cosm-transaction.service';
+import { WalletService } from '../../modules/wallet/wallet.service';
 import {
   DELEGATION_AMOUNT_RATE,
   DELEGATOR_MNEMONIC,
-} from './constants/environments';
-import * as BigNumber from 'bignumber';
-import { bigNumDividedByNumber, bigNumMultipliedByNumber } from './util';
+} from '../../constants/environments';
+import { bigNumDividedByNumber, bigNumMultipliedByNumber } from '../../util';
 
 @Injectable()
-export class AppService {
+export class AutoCompoundService {
   constructor(
     private readonly providerService: CosmProviderService,
     private readonly transactionService: CosmTransactionService,
     private readonly walletService: WalletService,
   ) {}
+
+
 
   async votingProcess(params: {
     validatorAddress: string;

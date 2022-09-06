@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppCommand = void 0;
-const app_service_1 = require("./app.service");
+const auto_compound_service_1 = require("./entries/auto-compound/auto-compound.service");
 const nestjs_command_1 = require("nestjs-command");
 const common_1 = require("@nestjs/common");
 let AppCommand = class AppCommand {
@@ -47,7 +47,7 @@ __decorate([
 ], AppCommand.prototype, "vote", null);
 AppCommand = __decorate([
     common_1.Injectable(),
-    __metadata("design:paramtypes", [app_service_1.AppService])
+    __metadata("design:paramtypes", [auto_compound_service_1.AutoCompoundService])
 ], AppCommand);
 exports.AppCommand = AppCommand;
 //# sourceMappingURL=app.command.js.map

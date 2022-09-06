@@ -6,7 +6,7 @@ import {
   DELEGATION_TX_GAS_LIMIT,
   DENOMINATION,
   EVMOS_TESTNET_END_POINT,
-} from '../../constants/environments';
+} from '../../../constants/environments';
 import { Wallet } from '@ethersproject/wallet';
 import { UnsignedTransaction } from './interfaces';
 

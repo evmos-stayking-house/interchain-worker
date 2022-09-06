@@ -7,7 +7,7 @@ const bigNumDividedByNumber = (x, y) => {
 };
 exports.bigNumDividedByNumber = bigNumDividedByNumber;
 const bigNumMultipliedByNumber = (x, y) => {
-    return new bignumber_js_1.default(x).multipliedBy(new bignumber_js_1.default(y)).toFixed();
+    return new bignumber_js_1.default(x).multipliedBy(new bignumber_js_1.default(y)).toFixed(0);
 };
 exports.bigNumMultipliedByNumber = bigNumMultipliedByNumber;
 //# sourceMappingURL=index.js.map

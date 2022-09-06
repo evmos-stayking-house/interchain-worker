@@ -1,5 +1,5 @@
 import { generateEndpointBalances } from '@tharsis/provider';
-import { EVMOS_TESTNET_END_POINT } from '../../constants/environments';
+import { EVMOS_TESTNET_END_POINT } from '../../../constants/environments';
 import axios from 'axios';
 
 test('balance of evmos native coin', async () => {

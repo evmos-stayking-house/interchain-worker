@@ -1,23 +1,28 @@
 ## [Submodule] scheduled worker of the Stayking finance
 
 
-# Dependency 설치
+## 1. Dependency 설치
 
 ```
 yarn
 ```
 
-# 기능 리스트
+## 2. 기능 리스트
 
-- Delegation Tx (Auto-Compound)
+- Liquidation Bot ( 배포환경에선 1분 주기 )
 
-## [CLI] Delegation Tx 실행법
+## 3. ENV 환경 설정
+```aidl
+로컬환경: process.env 아래 환경 변수를 로컬로 설정함
+배포환경: github secret 에 담아서 이미지 빌드 후 ECR 등록 후 자동 배포됨
+[ENV] 
+ - BOT_PRIVATE_KEY: {봇 돌리는 Address PK},
+ - STAYKING_CONTRACT_ADDRESS: {StayKing Contract Address}
+```
+
+## 4. [CLI] Liquidation Bot Tx 실행법
 
 ```
-// 사전에 env 에 VALIDATOR_MNEMONIC 24 자리 키워드가 설정 되어 있어야 함 
-
-yarn start evmos:delegation:tx {Validator 주소} --from {Delegator 지갑 주소}
+// Vault Contract(USDC, ATOM 등) 별로 프로세스 병렬 처리
+yarn evmos:liquidation:bot --vault {Vault Contract 주소}
 ```
-
-## [Auto-Compound]
-해당 기능은 ECS Fargate Scheduled Task 를 통해 Daily 로 실행할 예정

@@ -1,18 +1,22 @@
 import { Module } from '@nestjs/common';
-import { CommandModule } from 'nestjs-command';
-import { CosmTransactionModule } from './transaction/cosmos/cosm-transaction.module';
-import { CosmProviderModule } from './provider/cosmos/cosm-provider.module';
-import { WalletModule } from './wallet/wallet.module';
-import { AppCommand } from './app.command';
-import { AppService } from './app.service';
+import {AppCommand} from "./app.command";
+import {CommandModule} from "nestjs-command";
+import {AutoCompoundModule} from "./tasks/auto-compound/auto-compound.module";
+import {StaykingLiquidationModule} from "./tasks/stayking-liquidation/stayking-liquidation.module";
+import { ConfigModule } from '@nestjs/config';
+import configuration from "./config/configuration";
 
 @Module({
   imports: [
+    AutoCompoundModule,
+    StaykingLiquidationModule,
     CommandModule,
-    CosmTransactionModule,
-    CosmProviderModule,
-    WalletModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configuration]
+    })
   ],
-  providers: [AppService, AppCommand],
+  providers: [AppCommand],
+  exports: [AppCommand]
 })
 export class AppModule {}

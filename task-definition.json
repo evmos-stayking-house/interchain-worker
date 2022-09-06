@@ -11,10 +11,9 @@
         }
       },
       "command": [
-        "evmos:delegation:tx",
-        "evmosvaloper1qvc6jej73armfs5fadn9lprx768f46d9wpd7d7",
-        "--from",
-        "evmos1h82qusem2s60mjagp4q9lyrpgw4r2s3h6xddse"
+        "evmos:liquidation:tx",
+        "--vault",
+        "0x1165fB4616AEBa68D9bD928811bBd5338b3eA6F1"
       ],
       "linuxParameters": {
         "initProcessEnabled": true
@@ -23,12 +22,16 @@
         {
           "name": "APP_ENV",
           "value": "development"
+        },
+        {
+          "name": "STAYKING_CONTRACT_ADDRESS",
+          "value": "0x14CB3b1a9F343B7F75F6Fb085Df2b210dEbA38f4"
         }
       ],
       "secrets": [
         {
-          "name": "DELEGATOR_MNEMONIC",
-          "valueFrom": "delegator_mnemonic"
+          "name": "BOT_PRIVATE_KEY",
+          "valueFrom": "/sooho/bq/hackathon/BOT_PRIVATE_KEY"
         }
       ],
       "cpu": 256,
