@@ -13,7 +13,7 @@
       "command": [
         "evmos:liquidation:bot",
         "--vault",
-        "0x1165fB4616AEBa68D9bD928811bBd5338b3eA6F1"
+        "0x33061E03aa8082d03f0aA66cDCf8159c976fc806"
       ],
       "linuxParameters": {
         "initProcessEnabled": true

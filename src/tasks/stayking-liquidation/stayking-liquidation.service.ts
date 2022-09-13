@@ -32,7 +32,7 @@ export class StaykingLiquidationService {
     const posLen = await this.getPositionLengthOf(vaultAddress);
     const vaultName = await vaultContract.name();
 
-    console.log(`We are ready for liquidate total ${posLen} positions from the vault ${vaultName}`);
+    console.log(`We are ready for liquidate total ${posLen} positions from the vault interest bearing tUSDC Vault`);
 
     const killablePositions: KillablePosition[] = await this.aggregateKillablePositions(Number(posLen), vaultContract);
 
