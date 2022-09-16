@@ -1,28 +1,42 @@
-## [Submodule] scheduled worker of the Stayking finance
+
+##  [Submodule] scheduled worker (with Typescript) of StayKing House
+
+---
+A command that are run to accommodate the EVMOS (EVM) side of StayKing House
+
+## Features
+
+---
+Run the clearing bot every minute
 
 
-## 1. Dependency 설치
+## Getting Started
+
+
+### 1. Install Dependency
 
 ```
 yarn
 ```
 
-## 2. 기능 리스트
-
-- Liquidation Bot ( 배포환경에선 1분 주기 )
-
-## 3. ENV 환경 설정
+### 2. Environments configuration
+- Local Environment
+- The following envs must be set for the local machine environment
 ```aidl
-로컬환경: process.env 아래 환경 변수를 로컬로 설정함
-배포환경: github secret 에 담아서 이미지 빌드 후 ECR 등록 후 자동 배포됨
-[ENV] 
- - BOT_PRIVATE_KEY: {봇 돌리는 Address PK},
- - STAYKING_CONTRACT_ADDRESS: {StayKing Contract Address}
+ export BOT_PRIVATE_KEY={Bot Execution PK}
+ export STAYKING_CONTRACT_ADDRESS={StayKing Contract Address}
 ```
 
-## 4. [CLI] Liquidation Bot Tx 실행법
+- Testnet Environment
+```aidl
+ Put the env variables in github secret, build image, register ECR, and distribute automatically
+```
 
+### 3. Liquidation Bot Tx Execution CLI ( Local )
 ```
-// Vault Contract(USDC, ATOM 등) 별로 프로세스 병렬 처리
-yarn evmos:liquidation:bot --vault {Vault Contract 주소}
+yarn evmos:liquidation:bot --vault {Vault Contract Address}
 ```
+
+### 4. Liquidation Bot Tx Execution CLI
+Testnet currently runs a clearing bot every minute via AWS ECS Fargate Scheduled Job below
+![img.png](img.png)
