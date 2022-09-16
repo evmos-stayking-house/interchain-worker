@@ -7,7 +7,7 @@ A command that are run to accommodate the EVMOS (EVM) side of StayKing House
 ## Features
 
 ---
-Run the clearing bot every minute
+Run the liquidation bot every minute to determine if it's liquidation or not, and to kill if it's liquidation
 
 
 ## Getting Started
@@ -37,6 +37,6 @@ yarn
 yarn evmos:liquidation:bot --vault {Vault Contract Address}
 ```
 
-### 4. Liquidation Bot Tx Execution CLI
+### 4. Liquidation Bot Tx Execution Scheduled Worker ( Testnet )
 Testnet currently runs a clearing bot every minute via AWS ECS Fargate Scheduled Job below
 ![img.png](img.png)
