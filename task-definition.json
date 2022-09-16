@@ -13,7 +13,7 @@
       "command": [
         "evmos:liquidation:bot",
         "--vault",
-        "0x33061E03aa8082d03f0aA66cDCf8159c976fc806"
+        "0xa6c036c12b65703Bd7C0e4F42Dc0E75f74675C64"
       ],
       "linuxParameters": {
         "initProcessEnabled": true
@@ -25,7 +25,7 @@
         },
         {
           "name": "STAYKING_CONTRACT_ADDRESS",
-          "value": "0x18A1Af12338d5a0fFF6aADb4364dBd8efF58f3f6"
+          "value": "0x5c16AD45ec86A50a59b4fe7d9B205aCa2100de2f"
         }
       ],
       "secrets": [
