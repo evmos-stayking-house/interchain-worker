@@ -36,5 +36,5 @@ yarn evmos:liquidation:bot --vault {Vault Contract Address}
 ```
 
 ### 4. Liquidation Bot Tx Execution Scheduled Worker ( Testnet )
-Testnet currently runs a clearing bot every minute via AWS ECS Fargate Scheduled Job below
+Testnet currently runs our liquidation bot every minute via AWS ECS Fargate Scheduled Job below
 ![img.png](img.png)
