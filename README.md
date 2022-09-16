@@ -1,12 +1,10 @@
 
 ##  [Submodule] scheduled worker (with Typescript) of StayKing House
 
----
 A command that are run to accommodate the EVMOS (EVM) side of StayKing House
 
 ## Features
 
----
 Run the liquidation bot every minute to determine if it's liquidation or not, and to kill if it's liquidation
 
 
